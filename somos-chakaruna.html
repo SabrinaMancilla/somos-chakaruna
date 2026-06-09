@@ -1131,7 +1131,8 @@
         <span class="success-icon">🦋</span>
         Recebemos seu chamado.<br/>
         <span style="color:var(--muted);font-size:16px;font-family:'Crimson Pro',serif;font-style:italic;">
-          Nossa equipe entrará em contato em breve para guiar seus próximos passos.
+          Abrimos uma conversa no WhatsApp para você falar com a nossa equipe.<br/>
+          Se a janela não abrir, <a href="https://wa.me/5513992028360" target="_blank" style="color:var(--gold);text-decoration:underline;">clique aqui</a>.
         </span>
       </div>
 
@@ -1284,10 +1285,60 @@ window.addEventListener('scroll', () => {
 });
 
 /* ── FORM ── */
+/* Cole abaixo a URL do seu Google Apps Script Web App (terminada em /exec) */
+const SHEETS_WEBHOOK_URL = 'COLE_AQUI_SUA_URL_DO_APPS_SCRIPT';
+const WHATSAPP_PHONE = '5513992028360'; // 55 (Brasil) + DDD + número
+
 function handleForm(e) {
   e.preventDefault();
-  document.getElementById('chamado-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
+  const form = document.getElementById('chamado-form');
+  const btn = form.querySelector('.form-btn');
+  const btnOriginal = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '🌿 &nbsp; Enviando... &nbsp; 🌿';
+
+  const data = {
+    nome:        form.nome.value.trim(),
+    telefone:    form.telefone.value.trim(),
+    email:       form.email.value.trim(),
+    cidade:      form.cidade.value.trim(),
+    experiencia: form.experiencia.value,
+    mensagem:    form.mensagem.value.trim(),
+    origem:      'site somos-chakaruna',
+    data:        new Date().toISOString()
+  };
+
+  // 1) Grava na planilha (Apps Script) — fire and forget, modo no-cors
+  const sheetsPromise = SHEETS_WEBHOOK_URL.startsWith('http')
+    ? fetch(SHEETS_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(() => {})
+    : Promise.resolve();
+
+  // 2) Constrói mensagem do WhatsApp
+  const linhas = [
+    'Olá! Vim pelo site *Somos Chaka Runa* e gostaria de receber mais informações sobre o próximo retiro. 🌿',
+    '',
+    `*Nome:* ${data.nome}`,
+    `*WhatsApp:* ${data.telefone}`
+  ];
+  if (data.email)       linhas.push(`*E-mail:* ${data.email}`);
+  if (data.cidade)      linhas.push(`*Cidade:* ${data.cidade}`);
+  if (data.experiencia) linhas.push(`*Experiência:* ${data.experiencia}`);
+  if (data.mensagem)    linhas.push('', `*Mensagem:* ${data.mensagem}`);
+  const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(linhas.join('\n'))}`;
+
+  // 3) Aguarda envio (curto) e finaliza
+  sheetsPromise.finally(() => {
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = btnOriginal;
+    window.open(waUrl, '_blank');
+  });
 }
 </script>
 </body>
