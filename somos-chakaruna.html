@@ -133,8 +133,8 @@
     }
     .hero-bg-img {
       position: absolute; inset: 0; z-index: 0;
-      background: url('mystic_bg.png') center top / cover no-repeat;
-      filter: brightness(0.35) saturate(1.2);
+      background: url('images/imagem-irmandade2.jpeg') center center / cover no-repeat;
+      filter: brightness(0.3) saturate(1.1);
       transform: scale(1.05);
       animation: slow-zoom 20s ease-in-out infinite alternate;
     }
@@ -391,13 +391,12 @@
     }
     .com-mosaic {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 280px 280px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 360px;
       gap: 3px; overflow: hidden;
       border: 1px solid rgba(200,132,42,0.1);
     }
     .com-photo { overflow: hidden; position: relative; }
-    .com-photo:nth-child(1) { grid-row: span 2; }
     .com-photo img {
       width: 100%; height: 100%; object-fit: cover;
       filter: brightness(0.75) saturate(0.85) sepia(0.12);
@@ -443,6 +442,85 @@
       padding: 40px 24px 24px;
       background: linear-gradient(to top, rgba(3,13,6,0.9), transparent);
       font-style: italic; font-size: 16px; color: rgba(242,232,208,0.65);
+    }
+
+    /* ── PRÓXIMO RETIRO ── */
+    .proximo-retiro {
+      padding: 120px 0;
+      background: linear-gradient(to bottom, var(--forest-dark) 0%, var(--forest-deep) 100%);
+      position: relative;
+    }
+    .pr-date-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      border: 1px solid rgba(200,132,42,0.35);
+      background: rgba(200,132,42,0.06);
+      padding: 12px 28px; margin: 0 auto 28px;
+      font-family: 'Rajdhani', sans-serif; font-size: 12px;
+      letter-spacing: 4px; text-transform: uppercase; color: var(--gold-bright);
+    }
+    .pr-date-badge-wrap { display: flex; justify-content: center; }
+    .pr-date-glyph { font-size: 16px; filter: drop-shadow(0 0 6px var(--gold)); }
+    .pr-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-top: 56px;
+    }
+    .pr-card {
+      position: relative; overflow: hidden;
+      border: 1px solid rgba(200,132,42,0.18);
+      background: rgba(200,132,42,0.02);
+      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+    }
+    .pr-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200,132,42,0.45);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.5);
+    }
+    .pr-card-img-wrap {
+      position: relative; aspect-ratio: 4/5; overflow: hidden;
+      background: var(--forest-deep);
+    }
+    .pr-card-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.7s ease, filter 0.4s;
+      filter: brightness(0.95) saturate(1.05);
+    }
+    .pr-card:hover .pr-card-img-wrap img {
+      transform: scale(1.04); filter: brightness(1) saturate(1.15);
+    }
+    .pr-card-body {
+      padding: 22px 24px 26px;
+      border-top: 1px solid rgba(200,132,42,0.12);
+    }
+    .pr-card-eyebrow {
+      font-family: 'Rajdhani', sans-serif; font-size: 10px;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .pr-card-title {
+      font-family: 'Cinzel', serif; font-size: 16px;
+      color: var(--gold-pale); letter-spacing: 1.5px;
+    }
+    .pr-cta-wrap {
+      display: flex; justify-content: center; margin-top: 64px;
+    }
+    .pr-cta {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-family: 'Rajdhani', sans-serif; font-size: 12px; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(200,132,42,0.5);
+      padding: 18px 38px; text-decoration: none;
+      transition: all 0.35s; position: relative; overflow: hidden;
+    }
+    .pr-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(200,132,42,0.18), rgba(240,184,74,0.1));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+    }
+    .pr-cta:hover { color: var(--gold-bright); border-color: var(--gold); }
+    .pr-cta:hover::before { transform: scaleX(1); }
+    .pr-cta span { position: relative; z-index: 1; }
+    @media (max-width: 920px) {
+      .pr-grid { grid-template-columns: 1fr; gap: 20px; }
     }
 
     /* ── DEPOIMENTOS ── */
@@ -492,7 +570,7 @@
     .chamado-bg {
       position: absolute; inset: 0;
       background:
-        url('mystic_bg.png') center top / cover no-repeat;
+        url('images/imagem-irmandade.jpeg') center center / cover no-repeat;
       filter: brightness(0.18) saturate(1.3);
     }
     .chamado-overlay {
@@ -671,6 +749,7 @@
     <li><a href="#medicinas">Medicinas</a></li>
     <li><a href="#comunidade">Comunidade</a></li>
     <li><a href="#retiro">Retiro</a></li>
+    <li><a href="#proximo-retiro">Próximo Retiro</a></li>
     <li><a href="#chamado">Contato</a></li>
   </ul>
   <a href="#chamado" class="nav-cta">Sentir o Chamado</a>
@@ -735,7 +814,7 @@
     <div class="qs-grid">
       <div class="qs-photo reveal-left">
         <div class="qs-photo-frame">
-          <img src="1773342691990_image.png" alt="Comunidade Somos Chaka Runa"/>
+          <img src="images/imagem-irmandade.jpeg" alt="Comunidade Somos Chaka Runa"/>
           <div class="qs-photo-overlay"></div>
         </div>
         <div class="qs-photo-corner tl"></div>
@@ -833,11 +912,9 @@
     <h2 class="section-title reveal">A <span>Comunidade</span></h2>
     <p class="section-lead reveal">Unidos pelo chamado. Sustentados pelo amor. Guiados pela floresta.</p>
     <div class="com-mosaic reveal">
-      <div class="com-photo"><img src="1773342691990_image.png" alt="Comunidade"/><div class="com-photo-ov"></div></div>
-      <div class="com-photo"><img src="1773342790313_image.png" alt="Ritual"/><div class="com-photo-ov"></div></div>
-      <div class="com-photo"><img src="1773342967951_image.png" alt="Retiro espiritual"/><div class="com-photo-ov"></div></div>
-      <div class="com-photo"><img src="1773342479111_image.png" alt="Logo"/><div class="com-photo-ov"></div></div>
-      <div class="com-photo"><img src="1773342829144_image.png" alt="Chaka Runa"/><div class="com-photo-ov"></div></div>
+      <div class="com-photo"><img src="images/imagem-irmandade.jpeg" alt="Irmandade Somos Chaka Runa"/><div class="com-photo-ov"></div></div>
+      <div class="com-photo"><img src="images/imagem-irmandade2.jpeg" alt="Comunidade em cerimônia"/><div class="com-photo-ov"></div></div>
+      <div class="com-photo"><img src="images/fotos-local-retiro.PNG" alt="Local do retiro"/><div class="com-photo-ov"></div></div>
     </div>
   </div>
 </section>
@@ -885,9 +962,64 @@
         </div>
       </div>
       <div class="ret-image reveal-right">
-        <img src="1773342790313_image.png" alt="Retiro Espiritual"/>
+        <img src="images/fotos-local-retiro.PNG" alt="Local do Retiro Espiritual"/>
         <div class="ret-image-caption">"Cada cerimônia é um encontro único entre o buscador e o sagrado."</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRÓXIMO RETIRO ══ -->
+<section class="proximo-retiro" id="proximo-retiro">
+  <div class="section-inner">
+    <div class="section-ornament reveal">
+      <div class="ornament-line"></div>
+      <span class="ornament-symbol">🌕</span>
+      <div class="ornament-line r"></div>
+    </div>
+    <p class="section-label reveal">Próxima Jornada</p>
+    <h2 class="section-title reveal">Nosso <span>Próximo Retiro</span></h2>
+    <div class="pr-date-badge-wrap reveal">
+      <div class="pr-date-badge">
+        <span class="pr-date-glyph">🌿</span>
+        <span>Setembro · 2026</span>
+        <span class="pr-date-glyph">🌿</span>
+      </div>
+    </div>
+    <p class="section-lead reveal">A floresta nos convoca. Conheça o local, a programação e o investimento para sua jornada de cura e expansão.</p>
+
+    <div class="pr-grid reveal">
+      <div class="pr-card">
+        <div class="pr-card-img-wrap">
+          <img src="images/fotos-local-retiro.PNG" alt="Local do retiro - Setembro 2026"/>
+        </div>
+        <div class="pr-card-body">
+          <p class="pr-card-eyebrow">🌳 O Local</p>
+          <p class="pr-card-title">Onde a floresta acolhe</p>
+        </div>
+      </div>
+      <div class="pr-card">
+        <div class="pr-card-img-wrap">
+          <img src="images/programacao-retiro-09-2026.PNG" alt="Programação do retiro - Setembro 2026"/>
+        </div>
+        <div class="pr-card-body">
+          <p class="pr-card-eyebrow">🕯️ Programação</p>
+          <p class="pr-card-title">O fluxo da jornada</p>
+        </div>
+      </div>
+      <div class="pr-card">
+        <div class="pr-card-img-wrap">
+          <img src="images/investimento-retiro-09-2026.PNG" alt="Investimento do retiro - Setembro 2026"/>
+        </div>
+        <div class="pr-card-body">
+          <p class="pr-card-eyebrow">✦ Investimento</p>
+          <p class="pr-card-title">Valor da experiência</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pr-cta-wrap reveal">
+      <a href="#chamado" class="pr-cta"><span>🦋</span><span>Quero me inscrever</span><span>🦋</span></a>
     </div>
   </div>
 </section>
@@ -1012,6 +1144,7 @@
         <li><a href="#medicinas">Medicinas</a></li>
         <li><a href="#comunidade">Comunidade</a></li>
         <li><a href="#retiro">Retiro</a></li>
+        <li><a href="#proximo-retiro">Próximo Retiro</a></li>
         <li><a href="#chamado">Contato</a></li>
       </ul>
     </div>
