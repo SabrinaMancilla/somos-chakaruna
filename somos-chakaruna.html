@@ -91,6 +91,16 @@
     }
     .nav-logo {
       display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      height: 52px; width: auto; display: block;
+      filter: drop-shadow(0 0 10px rgba(200,132,42,0.5));
+      transition: filter 0.3s, transform 0.3s;
+    }
+    .nav-logo:hover .nav-logo-img {
+      filter: drop-shadow(0 0 16px rgba(240,184,74,0.7));
+      transform: scale(1.04);
     }
     .nav-logo-eye { font-size: 18px; filter: drop-shadow(0 0 6px var(--eye-glow)); }
     .nav-logo-text {
@@ -166,6 +176,21 @@
       text-transform: uppercase; color: var(--gold);
       margin-bottom: 32px; opacity: 0;
       animation: fade-up 1s ease forwards 0.5s;
+    }
+    .hero-logo-wrap {
+      position: relative; margin-bottom: 36px; opacity: 0;
+      animation: fade-in 1.4s ease forwards 0.7s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-logo-img {
+      width: clamp(260px, 38vw, 460px); height: auto; display: block;
+      filter: drop-shadow(0 0 24px rgba(200,132,42,0.55))
+              drop-shadow(0 0 60px rgba(232,148,10,0.3));
+      animation: logo-float 7s ease-in-out infinite;
+    }
+    @keyframes logo-float {
+      0%,100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-8px) scale(1.015); }
     }
     .hero-ring-wrap {
       position: relative; margin-bottom: 36px; opacity: 0;
@@ -741,10 +766,9 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <span class="nav-logo-eye">👁️</span>
-    <span class="nav-logo-text">Somos Chaka Runa</span>
-  </div>
+  <a href="#" class="nav-logo">
+    <img src="images/logo-somoschakaruna-gold.png" alt="Somos Chaka Runa" class="nav-logo-img"/>
+  </a>
   <ul class="nav-links">
     <li><a href="#quem-somos">A Entidade</a></li>
     <li><a href="#medicinas">Medicinas</a></li>
@@ -778,17 +802,8 @@
 
   <div class="hero-content">
     <p class="hero-eyebrow">Entidade Filantrópica Espiritual · São Paulo</p>
-    <div class="hero-ring-wrap">
-      <div class="hero-ring-outer">
-        <div class="hero-ring-inner">
-          <span class="hero-eye">👁️</span>
-          <div class="hero-wordmark">
-            <div class="hw-somos">SOMOS</div>
-            <div class="hw-chaka">CHAKA</div>
-            <div class="hw-runa">RUNA</div>
-          </div>
-        </div>
-      </div>
+    <div class="hero-logo-wrap">
+      <img src="images/logo-somoschakaruna-gold.png" alt="Somos Chaka Runa" class="hero-logo-img"/>
     </div>
     <p class="hero-tagline">Uma ponte de consciência entre mundos —<br/>unindo o céu e a terra, o espírito e a matéria.</p>
     <p class="hero-sub">🌿 Medicinas da Floresta &nbsp;·&nbsp; Xamanismo &nbsp;·&nbsp; Amor 🌿</p>
@@ -1133,8 +1148,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-brand-logo">
-        <span style="font-size:18px;filter:drop-shadow(0 0 6px var(--eye-glow))">👁️</span>
-        <span class="nav-logo-text" style="font-size:14px;">Somos Chaka Runa</span>
+        <img src="images/logo-somoschakaruna-gold.png" alt="Somos Chaka Runa" style="height:72px;width:auto;filter:drop-shadow(0 0 10px rgba(200,132,42,0.4));"/>
       </div>
       <p>Entidade filantrópica sem fins lucrativos, dedicada ao uso sagrado das medicinas da floresta, à expansão da consciência e ao serviço ao amor e à vida.</p>
     </div>
