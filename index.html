@@ -412,6 +412,10 @@
     .plan .plan-price small { color: var(--ink-faint); }
     .plan .plan-feats li { color: var(--ink-soft); }
     .plan .plan-warn { color: var(--terra-deep); }
+    /* estado esgotado */
+    .plan.soldout { opacity: 0.92; }
+    .plan-flag.soldout { background: var(--ink-soft); }
+    .btn-soldout { background: var(--sand); color: var(--ink-soft); cursor: default; pointer-events: none; box-shadow: none; }
 
     .incluso { max-width: 900px; margin: 56px auto 0; }
     .incluso h3 { text-align: center; font-size: 22px; margin-bottom: 24px; }
@@ -843,6 +847,7 @@
         <p class="prog-day">Domingo</p>
         <p class="prog-daysub">Dia 13</p>
         <div class="prog-item"><span class="prog-time">9h</span><span class="prog-desc">Café da manhã</span></div>
+        <div class="prog-item"><span class="prog-time">·</span><span class="prog-desc">Banho de ervas</span></div>
         <div class="prog-item"><span class="prog-time">·</span><span class="prog-desc">Roda de Rapé</span></div>
         <div class="prog-item"><span class="prog-time">·</span><span class="prog-desc">Reiki Xamânico</span></div>
         <div class="prog-item"><span class="prog-time">·</span><span class="prog-desc">Roda de integração &amp; pintura intuitiva</span></div>
@@ -855,8 +860,8 @@
     <!-- INVESTIMENTO -->
     <h3 style="text-align:center;font-size:26px;margin-top:64px;" class="rv">Escolha seu formato</h3>
     <div class="pricing">
-      <div class="plan featured rv">
-        <span class="plan-flag">Mais escolhido · 8 vagas</span>
+      <div class="plan soldout rv">
+        <span class="plan-flag soldout">Esgotado</span>
         <span class="plan-ic">🏡</span>
         <p class="plan-name">Pacote Casa</p>
         <p class="plan-price">R$ 797<small>Hospedagem compartilhada</small></p>
@@ -866,10 +871,11 @@
           <li>Cerimônia inclusa</li>
           <li>Toda a programação e integração</li>
         </ul>
-        <a href="#inscricao" class="btn btn-primary">Quero o Pacote Casa</a>
-        <p class="plan-warn">⚠️ Apenas 8 vagas disponíveis</p>
+        <span class="btn btn-soldout">Esgotado</span>
+        <p class="plan-warn">Vagas esgotadas · fale com a gente para a lista de espera</p>
       </div>
-      <div class="plan rv">
+      <div class="plan featured rv">
+        <span class="plan-flag">Vagas abertas</span>
         <span class="plan-ic">⛺</span>
         <p class="plan-name">Pacote Camping</p>
         <p class="plan-price">R$ 697<small>Espaço para camping</small></p>
@@ -879,7 +885,7 @@
           <li>Cerimônia inclusa</li>
           <li>Toda a programação e integração</li>
         </ul>
-        <a href="#inscricao" class="btn btn-ghost">Quero o Pacote Camping</a>
+        <a href="#inscricao" class="btn btn-primary">Quero o Pacote Camping</a>
         <p class="plan-warn">Levar barraca e itens pessoais</p>
       </div>
     </div>
